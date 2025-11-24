@@ -9,7 +9,7 @@
 <title>ESSEN - Mónica Michea</title>
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; font-family: "Forum", serif; font-weight: 600; font-style: normal; }
+    html, body { height: 100%; font-family: "Forum", serif; font-weight: 600; font-style: normal; font-size: 16px;}
     body { scroll-behavior: smooth; }
 
     .navbar {
@@ -32,6 +32,11 @@
         gap: 15px;
     }
 
+    .nombre{
+        color:white;
+        font-size: 1.5em;
+    }
+
     .navbar img { height: 40px; }
 
     .nav-links { display: flex; gap: 25px; }
@@ -40,9 +45,10 @@
         color: #fff;
         text-decoration: none;
         font-weight: bold;
+        text-shadow: 5px 0px 10px #000;
     }
     .nav-links a:hover{
-        color: #fff;
+        color: rgb(255, 255, 255);
         background: #c48601; 
         border-radius: 10px;
     }
@@ -53,7 +59,7 @@
     .glass-box {
         background: rgba(255, 174, 0, 0.2); 
         backdrop-filter: blur(3px);
-        padding: 30px;
+        padding: 25px;
         border-radius: 20px;
         width: 60%;
         max-width: 80%;
@@ -66,10 +72,22 @@
         align-items: center;
     }
 
+    .glass-box h1 { color: #fff; margin-bottom: 15px; font-size: 2.8rem; text-shadow: 5px 0px 10px #000;}
+    .glass-box h2 { color: #fff; margin-bottom: 15px; font-size: 1.8rem; text-shadow: 5px 0px 10px #000;}
+    .glass-box p { color: #f0f0f0; margin-bottom: 20px; text-shadow: 5px 0px 10px #000;}
+
+
+    .glascontacto{
+        background: rgba(0, 217, 255, 0.2); 
+    }
+
     @media (max-width: 768px) {
         .nav-links { display: none; }
         .hamburger { display: flex; }
 
+        .nombre{
+            font-size: 1.3em;
+        }
         #menu-mobile {
             position: absolute;
             top: 70px;
@@ -100,6 +118,9 @@
         height: 35%;
         min-height: 32%;
         }
+
+        .glass-box h1 {font-size: 2.1rem;}
+        .glass-box h2 {font-size: 1.5rem;}
     }
 
     /* Nunca debe aparecer en desktop */
@@ -148,9 +169,7 @@
 
     
 
-    .glass-box h1 { color: #fff; margin-bottom: 15px; font-size: 2.8rem;}
-    .glass-box h2 { color: #fff; margin-bottom: 15px; font-size: 1.8rem;}
-    .glass-box p { color: #f0f0f0; margin-bottom: 20px; }
+
 
     .btn {
         display: inline-block;
@@ -161,6 +180,12 @@
         border-radius: 8px;
         font-weight: bold;
         text-decoration: none;
+    }
+
+    .contacto {
+        background: #ffd000;
+        color: #111;
+
     }
 
     footer {
@@ -183,7 +208,7 @@
 <div class="navbar">
     <div class="left">
         <img src="img/logo.png" alt="Logo">
-        <h2 style="color:white;">Mónica Michea - ESSEN</h2>
+        <h2 class="nombre">Mónica Michea - ESSEN</h2>
     </div>
 
     <div class="nav-links">
@@ -193,6 +218,8 @@
         <a href="#sec4">Inducción</a>
         <a href="#sec5">Nuit</a>
         <a href="#sec6">Terra</a>
+        <a href="#sec7">Complementos</a>
+        <a href="#sec8">Bazar</a>
     </div>
 
     <div class="hamburger" onclick="toggleMenu()">
@@ -207,6 +234,8 @@
         <a href="#sec4" onclick="toggleMenu()">Inducción</a>
         <a href="#sec5" onclick="toggleMenu()">Nuit</a>
         <a href="#sec6" onclick="toggleMenu()">Terra</a>
+        <a href="#sec7" onclick="toggleMenu()">Complementos</a>
+        <a href="#sec8" onclick="toggleMenu()">Bazar</a>
     </div>
 </div>
 
@@ -218,16 +247,18 @@
         <div class="slide" data-bg-desktop="img/full/1920/hero3.jpg" data-bg-mobile="img/full/1080/hero3.jpg"></div>
     </div>
 
-    <div class="glass-box">
-        <h1>Tené tus productos Essen!</h1>
-        <p>Consultame por cualquiera de los productos que Essen tiene para ofrecer...</p>
+    <div class="glass-box glascontacto">
+        <h1>¿Querés ser parte de mi equipo?</h1>
+        <p>¡Comenzá tu propio negocio y conocé las ventajas de emprender con Essen!</p>
+        <a id="btn_vender" class="btn contacto" href="#">Hablemos...</a>
 
     </div>
     <div class="glass-box">
 
-        <h2>Conocé Rein...</h2>
-        <p>Nuestro nuevo robót es la nueva forma de cocinar!</p>
-        <a class="btn" href="#">Ver más</a>
+        <h1>Conocé Rein...</h1>
+        <p>Rein llega para hacer match con lo mejor de tu cocina a la Essen. Se adapta a tu ritmo, a tu forma de cocinar, y se integra con todo lo que ya usás.</p>
+        <p>¡Viene con una Sartén 24cm o una Cacerola 24cm de regalo!</p>
+        <a id="btn_rein" class="btn" href="#">Saber más...</a>
     </div>
 </section>
 
@@ -235,47 +266,133 @@
 <section id="sec2" class="bg-sec" data-bg-desktop="img/full/1920/capri.jpg" data-bg-mobile="img/full/1080/capri.jpg">
     <div class="glass-box">
         <h1>Línea Capri</h1>
-        <p>Texto de ejemplo aquí.</p>
-        <a class="btn" href="#">Continuar</a>
+        <p>Descubrí una nueva forma de cocina. <br>
+            Encontrá los productos ideales para vos</p>
+        <a id="btn_capri" class="btn" href="#">Saber más...</a>
     </div>
 </section>
 
 <section id="sec3" class="bg-sec" data-bg-desktop="img/full/1920/fusion.jpg" data-bg-mobile="img/full/1080/fusion.jpg">
     <div class="glass-box">
         <h1>Línea Fusión</h1>
-        <p>Contenido adicional.</p>
-        <a class="btn" href="#">Seguir</a>
+        <p>Descubrí una nueva forma de cocina. <br>
+            Encontrá los productos ideales para vos</p>
+        <a id="btn_fusion" class="btn" href="#">Saber más...</a>
     </div>
 </section>
 
 <section id="sec4" class="bg-sec" data-bg-desktop="img/full/1920/induccion.jpg" data-bg-mobile="img/full/1080/induccion.jpg">
     <div class="glass-box">
         <h1>Línea Inducción</h1>
-        <p>Contenido adicional.</p>
-        <a class="btn" href="#">Seguir</a>
+        <p>Descubrí una nueva forma de cocina. <br>
+            Encontrá los productos ideales para vos</p>
+        <a id="btn_induccion" class="btn" href="#">Saber más...</a>
     </div>
 </section>
 
 <section id="sec5" class="bg-sec" data-bg-desktop="img/full/1920/nuit.jpg" data-bg-mobile="img/full/1080/nuit.jpg">
     <div class="glass-box">
         <h1>Línea Nuit</h1>
-        <p>Contenido adicional.</p>
-        <a class="btn" href="#">Seguir</a>
+        <p>Descubrí una nueva forma de cocina. <br>
+            Encontrá los productos ideales para vos</p>
+        <a id="btn_nuit" class="btn" href="#">Saber más...</a>
     </div>
 </section>
-
-
 
 <section id="sec6" class="bg-sec" data-bg-desktop="img/full/1920/terra.jpg" data-bg-mobile="img/full/1080/terra.jpg">
     <div class="glass-box">
         <h1>Línea Terra</h1>
-        <p>Contenido adicional.</p>
-        <a class="btn" href="#"">Seguir</a>
+        <p>Descubrí una nueva forma de cocina. <br>
+            Encontrá los productos ideales para vos</p>
+        <a id="btn_terra" class="btn" href="#"">Saber más...</a>
+    </div>
+</section>
+
+<section id="sec7" class="bg-sec" data-bg-desktop="img/full/1920/complementos.jpg" data-bg-mobile="img/full/1080/complementos.jpg">
+    <div class="glass-box">
+        <h1>Complementos</h1>
+        <p>Potenciá todos los beneficios y funciones de tu Essen</p>
+        <a id="btn_complementos" class="btn" href="#">Saber más...</a>
+    </div>
+</section>
+
+<section id="sec8" class="bg-sec" data-bg-desktop="img/full/1920/bazar.jpg" data-bg-mobile="img/full/1080/bazar.jpg">
+    <div class="glass-box">
+        <h1>Bazar Premium</h1>
+        <p>Productos pensados para antes, durante y después de cada preparación</p>
+        <a id="btn_bazar" class="btn" href="#">Saber más...</a>
     </div>
     <footer>© 2025 Mónica Michea.</footer>
 </section>
 
 <script>
+const hero = document.getElementById("hero");
+
+const btn_vender = document.getElementById("btn_vender");
+const btn_rein = document.getElementById("btn_rein");
+const btn_capri= document.getElementById("btn_capri");
+const btn_fusion = document.getElementById("btn_fusion");
+const btn_induccion = document.getElementById("btn_induccion");
+const btn_nuit = document.getElementById("btn_nuit");
+const btn_terra = document.getElementById("btn_terra");
+const btn_complementos = document.getElementById("btn_complementos");
+const btn_bazar = document.getElementById("btn_bazar");
+
+
+btn_vender.addEventListener("click", function() {
+    let msg = "Hola, quiero ser vendedora Essen!";
+    window.open(`https://wa.me/5491141755430?text=${msg}`, '_blank');
+    hero.scrollIntoView();
+});
+
+btn_rein.addEventListener("click", function() {
+    let msg = "Hola, quiero información sobre el Rein!";
+    window.open(`https://wa.me/5491141755430?text=${msg}`, '_blank');
+    hero.scrollIntoView();
+});
+
+btn_capri.addEventListener("click", function() {
+    let msg = "Hola, quiero información sobre la linea Capri...";
+    window.open(`https://wa.me/5491141755430?text=${msg}`, '_blank');
+    hero.scrollIntoView();
+});
+
+btn_fusion.addEventListener("click", function() {
+    let msg = "Hola, quiero información sobre la linea Fusión...";
+    window.open(`https://wa.me/5491141755430?text=${msg}`, '_blank');
+    hero.scrollIntoView();
+});
+
+btn_induccion.addEventListener("click", function() {
+    let msg = "Hola, quiero información sobre la linea Inducción...";
+    window.open(`https://wa.me/5491141755430?text=${msg}`, '_blank');
+    hero.scrollIntoView();
+});
+
+btn_nuit.addEventListener("click", function() {
+    let msg = "Hola, quiero información sobre la linea Nuit...";
+    window.open(`https://wa.me/5491141755430?text=${msg}`, '_blank');
+    hero.scrollIntoView();
+});
+
+btn_terra.addEventListener("click", function() {
+    let msg = "Hola, quiero información sobre la linea Terra...";
+    window.open(`https://wa.me/5491141755430?text=${msg}`, '_blank');
+    hero.scrollIntoView();
+});
+
+btn_complementos.addEventListener("click", function() {
+    let msg = "Hola, quiero información sobre Complementos...";
+    window.open(`https://wa.me/5491141755430?text=${msg}`, '_blank');
+    hero.scrollIntoView();
+});
+
+btn_bazar.addEventListener("click", function() {
+    let msg = "Hola, quiero información sobre elementos de Bazar...";
+    window.open(`https://wa.me/5491141755430?text=${msg}`, '_blank');
+    hero.scrollIntoView();
+});
+
 /* ---------------- NAV BAR FIX ------------------- */
 function toggleMenu() {
     document.getElementById("menu-mobile").classList.toggle("open");

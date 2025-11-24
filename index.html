@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+<title>ESSEN - Mónica Michea</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: "Forum", serif; font-weight: 600; font-style: normal; }
+    body { scroll-behavior: smooth; }
+
+    .navbar {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 174, 0, 0.8); 
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        
+    }
+
+    .navbar .left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .navbar img { height: 40px; }
+
+    .nav-links { display: flex; gap: 25px; }
+
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .nav-links a:hover{
+        color: #fff;
+        background: #c48601; 
+        border-radius: 10px;
+    }
+
+    /* Hamburguesa */
+    .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+    .hamburger span { width: 28px; height: 3px; background: #fff; }
+    .glass-box {
+        background: rgba(255, 174, 0, 0.2); 
+        backdrop-filter: blur(3px);
+        padding: 30px;
+        border-radius: 20px;
+        width: 60%;
+        max-width: 80%;
+        text-align: center;
+        height: 40%;
+        max-height: 60%;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .hamburger { display: flex; }
+
+        #menu-mobile {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border-radius: 10px;
+            flex-direction: column;
+            gap: 15px;
+            display: none;
+            z-index: 999;
+        }
+
+        #menu-mobile a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 18px; 
+        }
+
+        /* cuando se abre */
+        #menu-mobile.open {
+            display: flex !important;
+        }
+
+        .glass-box {
+        width: 80%;
+        min-width: 70%;
+        height: 35%;
+        min-height: 32%;
+        }
+    }
+
+    /* Nunca debe aparecer en desktop */
+    @media (min-width: 769px) {
+        #menu-mobile { display: none !important; }
+    }
+
+    /* Secciones */
+    section {
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        position: relative;
+        border-bottom: #666 2px solid;
+    }
+
+    /* Slider de la primera sección */
+    #hero {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    #slider {
+        position: absolute;
+        top: 0; left: 0;
+        width: 300%;
+        height: 100%;
+        display: flex;
+        transition: transform 1s ease-in-out;
+    }
+
+    .slide {
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    
+
+    .glass-box h1 { color: #fff; margin-bottom: 15px; font-size: 2.8rem;}
+    .glass-box h2 { color: #fff; margin-bottom: 15px; font-size: 1.8rem;}
+    .glass-box p { color: #f0f0f0; margin-bottom: 20px; }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background: #ff6600;
+        border: none;
+        color: #fff;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    footer {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        background: #111;
+        color: #ccc;
+        position: absolute;
+        bottom: 0;
+        border-top: #ff6600 1px solid;
+    }
+
+    .bg-sec { background-size: cover; background-position: center; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="left">
+        <img src="img/logo.png" alt="Logo">
+        <h2 style="color:white;">Mónica Michea - ESSEN</h2>
+    </div>
+
+    <div class="nav-links">
+        <a href="#hero">Inicio</a>
+        <a href="#sec2">Capri</a>
+        <a href="#sec3">Fusión</a>
+        <a href="#sec4">Inducción</a>
+        <a href="#sec5">Nuit</a>
+        <a href="#sec6">Terra</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+
+    <!-- MENÚ MOBILE -->
+    <div id="menu-mobile">
+        <a href="#hero" onclick="toggleMenu()">Inicio</a>
+        <a href="#sec2" onclick="toggleMenu()">Capri</a>
+        <a href="#sec3" onclick="toggleMenu()">Fusión</a>
+        <a href="#sec4" onclick="toggleMenu()">Inducción</a>
+        <a href="#sec5" onclick="toggleMenu()">Nuit</a>
+        <a href="#sec6" onclick="toggleMenu()">Terra</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+    <div id="slider">
+        <div class="slide" data-bg-desktop="img/full/1920/hero1.jpg" data-bg-mobile="img/full/1080/hero1.jpg"></div>
+        <div class="slide" data-bg-desktop="img/full/1920/hero2.jpg" data-bg-mobile="img/full/1080/hero2.jpg"></div>
+        <div class="slide" data-bg-desktop="img/full/1920/hero3.jpg" data-bg-mobile="img/full/1080/hero3.jpg"></div>
+    </div>
+
+    <div class="glass-box">
+        <h1>Tené tus productos Essen!</h1>
+        <p>Consultame por cualquiera de los productos que Essen tiene para ofrecer...</p>
+
+    </div>
+    <div class="glass-box">
+
+        <h2>Conocé Rein...</h2>
+        <p>Nuestro nuevo robót es la nueva forma de cocinar!</p>
+        <a class="btn" href="#">Ver más</a>
+    </div>
+</section>
+
+<!-- SECCIONES -->
+<section id="sec2" class="bg-sec" data-bg-desktop="img/full/1920/capri.jpg" data-bg-mobile="img/full/1080/capri.jpg">
+    <div class="glass-box">
+        <h1>Línea Capri</h1>
+        <p>Texto de ejemplo aquí.</p>
+        <a class="btn" href="#">Continuar</a>
+    </div>
+</section>
+
+<section id="sec3" class="bg-sec" data-bg-desktop="img/full/1920/fusion.jpg" data-bg-mobile="img/full/1080/fusion.jpg">
+    <div class="glass-box">
+        <h1>Línea Fusión</h1>
+        <p>Contenido adicional.</p>
+        <a class="btn" href="#">Seguir</a>
+    </div>
+</section>
+
+<section id="sec4" class="bg-sec" data-bg-desktop="img/full/1920/induccion.jpg" data-bg-mobile="img/full/1080/induccion.jpg">
+    <div class="glass-box">
+        <h1>Línea Inducción</h1>
+        <p>Contenido adicional.</p>
+        <a class="btn" href="#">Seguir</a>
+    </div>
+</section>
+
+<section id="sec5" class="bg-sec" data-bg-desktop="img/full/1920/nuit.jpg" data-bg-mobile="img/full/1080/nuit.jpg">
+    <div class="glass-box">
+        <h1>Línea Nuit</h1>
+        <p>Contenido adicional.</p>
+        <a class="btn" href="#">Seguir</a>
+    </div>
+</section>
+
+
+
+<section id="sec6" class="bg-sec" data-bg-desktop="img/full/1920/terra.jpg" data-bg-mobile="img/full/1080/terra.jpg">
+    <div class="glass-box">
+        <h1>Línea Terra</h1>
+        <p>Contenido adicional.</p>
+        <a class="btn" href="#"">Seguir</a>
+    </div>
+    <footer>© 2025 Mónica Michea.</footer>
+</section>
+
+<script>
+/* ---------------- NAV BAR FIX ------------------- */
+function toggleMenu() {
+    document.getElementById("menu-mobile").classList.toggle("open");
+}
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth >= 769) {
+        document.getElementById("menu-mobile").classList.remove("open");
+    }
+    
+});
+
+/* ---------------- Fondos responsivos ------------------- */
+function updateBackgrounds() {
+    const isMobile = window.innerHeight > window.innerWidth;
+    document.querySelectorAll('.bg-sec').forEach(sec => {
+        sec.style.backgroundImage = `url('${isMobile ? sec.dataset.bgMobile : sec.dataset.bgDesktop}')`;
+    });
+}
+function updateHero() {
+    const isMobile = window.innerHeight > window.innerWidth;
+    document.querySelectorAll('#slider .slide').forEach(sl => {
+        sl.style.backgroundImage = `url('${isMobile ? sl.dataset.bgMobile : sl.dataset.bgDesktop}')`;
+    });
+}
+updateBackgrounds();
+updateHero();
+window.addEventListener('resize', () => { updateBackgrounds(); updateHero(); });
+
+/* ---------------- Slider ------------------- */
+let current = 0;
+function slideHero() {
+    current = (current + 1) % 3;
+    const x = -current * document.documentElement.clientWidth;
+    document.getElementById('slider').style.transform = `translateX(${x}px)`;
+}
+setInterval(slideHero, 2000);
+</script>
+</body>
+</html>
